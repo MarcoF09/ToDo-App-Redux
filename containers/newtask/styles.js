@@ -28,5 +28,6 @@ export const styles = StyleSheet.create({
     fontFamily: "SourceSansPro-Regular",
     fontSize: 14,
     borderBottomWidth: 1
-  }
+  },
+  statusBarText: { color: Colors.white, fontSize: 17, lineHeight: 20 }
 });
