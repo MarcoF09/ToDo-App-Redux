@@ -1,7 +1,13 @@
 import { ActionsTypes } from "../actions/actionTypes";
-import { combineReducers } from "redux";
+import {
+  addToDo,
+  changeCheckBoxState,
+  clearAllDone,
+  markAsNotDone,
+  markAsDone
+} from "../actions/ActionHandlers";
 
-const initialStateHome = {
+const initialState = {
   todo: [
     {
       id: 1,
@@ -36,46 +42,21 @@ const initialStateHome = {
   ]
 };
 
-function homeReducer(state = initialStateHome, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ActionsTypes.CLEAR_ALL_DONE:
-      return {
-        todo: state.todo.map(t => {
-          t.completed = false;
-          return t;
-        })
-      };
-
+      return clearAllDone(state, action);
     case ActionsTypes.CHANGE_CHECKBOX_STATE:
-      return {
-        todo: state.todo.map((item, index) => {
-          if (index === action.payload.index) {
-            item.completed = !item.completed;
-          }
-          return item;
-        })
-      };
+      return changeCheckBoxState(state, action);
     case ActionsTypes.HANDLE_ADD_DATA:
       return addToDo(state, action);
-    case ActionsTypes.ADD_TODO:
-    case ActionsTypes.ADD_TODO:
+    case ActionsTypes.HANDLE_MARK_AS_NOT_DONE:
+      return markAsNotDone(state, action);
+    case ActionsTypes.HANDLE_MARK_AS_DONE:
+      return markAsDone(state, action);
     default:
       return state;
   }
 }
 
-function addToDo(state, action) {
-  return Object.assign({}, state, {
-    todo: [
-      ...state.todo,
-      {
-        id: state.todo.length + 1,
-        title: action.payload.title,
-        description: action.payload.description,
-        completed: false
-      }
-    ]
-  });
-}
-
-export default homeReducer;
+export default rootReducer;

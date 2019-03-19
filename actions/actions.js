@@ -17,8 +17,24 @@ const addToDo = (title, description) => ({
   type: ActionsTypes.HANDLE_ADD_DATA
 });
 
+const markAsNotDone = index => ({
+  payload: {
+    index: index
+  },
+  type: ActionsTypes.HANDLE_MARK_AS_NOT_DONE
+});
+
+const markAsDone = index => ({
+  payload: {
+    index: index
+  },
+  type: ActionsTypes.HANDLE_MARK_AS_DONE
+});
+
 export const Actions = {
   clearAllDone,
   changeCheckBoxState,
-  addToDo
+  addToDo,
+  markAsNotDone,
+  markAsDone
 };
