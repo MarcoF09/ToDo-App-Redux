@@ -28,9 +28,11 @@ class Detail extends Component {
             }}
           />
         </View>
-        <Text style={styles.primaryText}>{navigation.getParam("title")}</Text>
+        <Text style={styles.primaryText}>
+          {this.props.todo[navigation.getParam("index")]["title"]}
+        </Text>
         <Text style={styles.secondaryText}>
-          {navigation.getParam("description")}
+          {this.props.todo[navigation.getParam("index")]["description"]}
         </Text>
         <Button
           text="MARK AS DONE"
@@ -43,6 +45,11 @@ class Detail extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    todo: state.todo
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   markAsNotDone: index => {
@@ -54,6 +61,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Detail);

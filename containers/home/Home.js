@@ -44,7 +44,6 @@ class Home extends Component {
             <Item
               onPress={() => {
                 navigation.push("Detail", {
-                  ...item.item,
                   index: item.index
                 });
               }}
