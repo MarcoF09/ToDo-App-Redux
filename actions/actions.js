@@ -11,23 +11,24 @@ import { deserializer } from "../utils/deserializer";
 const clearAllDone = todos => {
   return async dispatch => {
     try {
-      todos = todos.map((item, index) => {
-        return Object.assign({}, item, {
+      const todosNotDone = await todos.map((element, index) => {
+        let item = Object.assign({}, element, {
           completed: false
         });
+        updateData(serializer(item), element.id);
+        return item;
       });
-      await todos.forEach(element => {
-        let item = serializer(element);
-        updateData(item, element.id);
-      });
-      dispatch(clearAllDoneSuccess());
+      dispatch(clearAllDoneSuccess(todosNotDone));
     } catch (error) {
       dispatch(clearAllDoneFail());
     }
   };
 };
 
-const clearAllDoneSuccess = () => ({
+const clearAllDoneSuccess = todos => ({
+  payload: {
+    todo: todos
+  },
   type: ActionsTypes.CLEAR_ALL_DONE_SUCCESS
 });
 
@@ -38,22 +39,25 @@ const clearAllDoneFail = () => ({
 const changeCheckBoxState = (todos, index) => {
   return async dispatch => {
     try {
-      dispatch(changeCheckBoxStateSuccess(index));
-      todos = todos.map((item, indx) => {
+      const todosWithChange = todos.map((item, indx) => {
         if (indx === index) {
           item.completed = !item.completed;
         }
         return item;
       });
-      await updateData(serializer(todos[index]), todos[index].id);
+      await updateData(
+        serializer(todosWithChange[index]),
+        todosWithChange[index].id
+      );
+      dispatch(changeCheckBoxStateSuccess(todosWithChange));
     } catch (error) {
       dispatch(changeCheckBoxStateFail());
     }
   };
 };
 
-const changeCheckBoxStateSuccess = index => ({
-  payload: { index: index },
+const changeCheckBoxStateSuccess = todos => ({
+  payload: { todo: todos },
   type: ActionsTypes.CHANGE_CHECKBOX_STATE_SUCCESS
 });
 
@@ -93,23 +97,26 @@ const addToDoFail = () => ({
 const markAsNotDone = (todos, index) => {
   return async dispatch => {
     try {
-      todos = todos.map((item, indx) => {
+      const todosWithChange = todos.map((item, indx) => {
         if (indx === index) {
           item.completed = false;
         }
         return item;
       });
-      await updateData(serializer(todos[index]), todos[index].id);
-      dispatch(markAsNotDoneSuccess(index));
+      await updateData(
+        serializer(todosWithChange[index]),
+        todosWithChange[index].id
+      );
+      dispatch(markAsNotDoneSuccess(todosWithChange));
     } catch (error) {
       dispatch(markAsNotDoneFail());
     }
   };
 };
 
-const markAsNotDoneSuccess = index => ({
+const markAsNotDoneSuccess = todos => ({
   payload: {
-    index: index
+    todo: todos
   },
   type: ActionsTypes.HANDLE_MARK_AS_NOT_DONE_SUCCESS
 });
@@ -121,23 +128,26 @@ const markAsNotDoneFail = () => ({
 const markAsDone = (todos, index) => {
   return async dispatch => {
     try {
-      todos = todos.map((item, indx) => {
+      const todosWithChange = todos.map((item, indx) => {
         if (indx === index) {
           item.completed = true;
         }
         return item;
       });
-      await updateData(serializer(todos[index]), todos[index].id);
-      dispatch(markAsDoneSuccess(index));
+      await updateData(
+        serializer(todosWithChange[index]),
+        todosWithChange[index].id
+      );
+      dispatch(markAsDoneSuccess(todosWithChange));
     } catch (error) {
       dispatch(markAsDoneFail());
     }
   };
 };
 
-const markAsDoneSuccess = index => ({
+const markAsDoneSuccess = todos => ({
   payload: {
-    index: index
+    todo: todos
   },
   type: ActionsTypes.HANDLE_MARK_AS_DONE_SUCCESS
 });

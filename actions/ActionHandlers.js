@@ -14,50 +14,25 @@ export const addToDo = (state, action) => {
 
 export const changeCheckBoxState = (state, action) => {
   return Object.assign({}, state, {
-    todo: state.todo.map((item, index) => {
-      if (index === action.payload.index) {
-        return Object.assign({}, item, {
-          completed: !item.completed
-        });
-      }
-      return item;
-    })
+    todo: action.payload.todo
   });
 };
 
 export const clearAllDone = (state, action) => {
   return Object.assign({}, state, {
-    todo: state.todo.map((item, index) => {
-      return Object.assign({}, item, {
-        completed: false
-      });
-    })
+    todo: action.payload.todo
   });
 };
 
 export const markAsNotDone = (state, action) => {
   return Object.assign({}, state, {
-    todo: state.todo.map((item, index) => {
-      if (index === action.payload.index) {
-        return Object.assign({}, item, {
-          completed: false
-        });
-      }
-      return item;
-    })
+    todo: action.payload.todo
   });
 };
 
 export const markAsDone = (state, action) => {
   return Object.assign({}, state, {
-    todo: state.todo.map((item, index) => {
-      if (index === action.payload.index) {
-        return Object.assign({}, item, {
-          completed: true
-        });
-      }
-      return item;
-    })
+    todo: action.payload.todo
   });
 };
 
