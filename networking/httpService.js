@@ -28,6 +28,11 @@ class HttpService {
     return this.axios.put(url, body, { headers });
   }
 
+  async patch(url, body) {
+    const headers = await this._generateHeaders();
+    return this.axios.patch(url, body, { headers });
+  }
+
   async delete(url) {
     const headers = await this._generateHeaders();
     return this.axios.delete(url, { headers });

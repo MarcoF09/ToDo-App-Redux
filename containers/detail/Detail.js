@@ -23,7 +23,10 @@ class Detail extends Component {
           <Button
             text="Not done"
             onPress={() => {
-              this.props.markAsNotDone(navigation.getParam("index"));
+              this.props.markAsNotDone(
+                this.props.todo,
+                navigation.getParam("index")
+              );
               navigation.pop();
             }}
           />
@@ -37,7 +40,10 @@ class Detail extends Component {
         <Button
           text="MARK AS DONE"
           onPress={() => {
-            this.props.markAsDone(navigation.getParam("index"));
+            this.props.markAsDone(
+              this.props.todo,
+              navigation.getParam("index")
+            );
             navigation.pop();
           }}
         />
@@ -52,11 +58,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  markAsNotDone: index => {
-    dispatch(Actions.markAsNotDone(index));
+  markAsNotDone: (todos, index) => {
+    dispatch(Actions.markAsNotDone(todos, index));
   },
-  markAsDone: index => {
-    dispatch(Actions.markAsDone(index));
+  markAsDone: (todos, index) => {
+    dispatch(Actions.markAsDone(todos, index));
   }
 });
 

@@ -11,14 +11,11 @@ import { Colors } from "../../colors/Colors";
 import { Item } from "../../components/item";
 import { Button } from "../../components/button";
 import { styles } from "./styles";
-import { Actions, getToDoData } from "../../actions/actions";
+import { Actions } from "../../actions/actions";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-  }
-  componentDidMount() {
-    this.props.getToDoData();
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -33,8 +30,27 @@ class Home extends Component {
     )
   });
 
+  componentDidMount() {
+    this.props.getToDoData();
+  }
+
+  renderFooter = () => {
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <Button> This is footer </Button>
+      </View>
+    );
+  };
+
   render() {
     const { navigation } = this.props;
+
     return (
       <View>
         <StatusBar backgroundColor={Colors.customBlue} />
@@ -50,25 +66,26 @@ class Home extends Component {
               }}
               {...item.item}
               checkboxClick={() => {
-                this.props.changeCheckBoxState(item.index);
+                this.props.changeCheckBoxState(this.props.todo, item.index);
               }}
             />
           )}
+          ListFooterComponent={
+            this.props.todo.length > 0 ? (
+              <Button
+                text="CLEAR ALL DONE"
+                styleButton={styles.button}
+                onPress={() => {
+                  this.props.clearAllDone(this.props.todo);
+                }}
+              />
+            ) : (
+              <Text style={styles.primaryText}>
+                No task to display, please add a task!
+              </Text>
+            )
+          }
         />
-
-        {this.props.todo.length > 0 ? (
-          <Button
-            text="CLEAR ALL DONE"
-            styleButton={styles.button}
-            onPress={() => {
-              this.props.clearAllDone();
-            }}
-          />
-        ) : (
-          <Text style={styles.primaryText}>
-            No task to display, please add a task!
-          </Text>
-        )}
       </View>
     );
   }
@@ -82,13 +99,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getToDoData: () => {
-    dispatch(getToDoData());
+    dispatch(Actions.getToDoData());
   },
-  clearAllDone: () => {
-    dispatch(Actions.clearAllDone());
+  clearAllDone: todos => {
+    dispatch(Actions.clearAllDone(todos));
   },
-  changeCheckBoxState: index => {
-    dispatch(Actions.changeCheckBoxState(index));
+  changeCheckBoxState: (todos, index) => {
+    dispatch(Actions.changeCheckBoxState(todos, index));
   }
 });
 
