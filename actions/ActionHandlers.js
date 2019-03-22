@@ -41,3 +41,9 @@ export const getReturnedToDoData = (state, action) => {
     todo: [...action.payload.todo]
   });
 };
+
+export const deleteItem = (state, action) => {
+  return Object.assign({}, state, {
+    todo: action.payload.todo
+  });
+};

@@ -5,12 +5,12 @@ import {
   clearAllDone,
   markAsNotDone,
   markAsDone,
-  getReturnedToDoData
+  getReturnedToDoData,
+  deleteItem
 } from "../actions/ActionHandlers";
 
 const initialState = {
-  todo: [],
-  newDataFromLastGet: []
+  todo: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -39,6 +39,10 @@ function rootReducer(state = initialState, action) {
       return markAsDone(state, action);
     case ActionsTypes.HANDLE_MARK_AS_DONE_FAIL:
       console.log("error mark as done");
+    case ActionsTypes.DELETE_ITEM_SUCCESS:
+      return deleteItem(state, action);
+    case ActionsTypes.DELETE_ITEM_FAIL:
+      console.log("Error delete");
     default:
       return state;
   }

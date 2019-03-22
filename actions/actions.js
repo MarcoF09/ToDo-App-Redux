@@ -170,7 +170,7 @@ const getToDoData = () => {
       );
       dispatch(getToDoSuccess(deserializedData));
     } catch (error) {
-      dispatch(getToDoFail(error.message));
+      dispatch(getToDoFail());
     }
   };
 };
@@ -187,11 +187,37 @@ const getToDoFail = () => ({
   type: ActionsTypes.GET_TO_DO_DATA_SUCCESS
 });
 
+const deleteItem = (todos, index) => {
+  debugger;
+  return async dispatch => {
+    try {
+      await deleteData(todos[index].id);
+      const todosWithChange = [...todos];
+      todosWithChange.splice(index, 1);
+      dispatch(deleteItemSuccess(todosWithChange));
+    } catch (error) {
+      dispatch(deleteItemFail());
+    }
+  };
+};
+
+const deleteItemSuccess = (todos, index) => ({
+  payload: {
+    todo: todos
+  },
+  type: ActionsTypes.DELETE_ITEM_SUCCESS
+});
+
+const deleteItemFail = () => ({
+  type: ActionsTypes.DELETE_ITEM_FAIL
+});
+
 export const Actions = {
   clearAllDone,
   changeCheckBoxState,
   addToDo,
   markAsNotDone,
   markAsDone,
-  getToDoData
+  getToDoData,
+  deleteItem
 };

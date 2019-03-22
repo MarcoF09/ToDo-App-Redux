@@ -13,10 +13,5 @@ export const updateData = (todo, id) => {
 };
 
 export const deleteData = id => {
-  if (id == null) {
-    return false;
-  } else {
-    httpService.delete("http://todo-backend-express.herokuapp.com/" + id);
-    return true;
-  }
+  httpService.delete(`http://todo-backend-express.herokuapp.com/${id}`);
 };
