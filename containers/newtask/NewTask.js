@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { styles } from "./styles";
 import { Colors } from "../../colors/Colors";
+import { Strings } from "../../Strings/strings";
 import {
   StatusBar,
   View,
@@ -34,7 +35,7 @@ class NewTask extends Component {
           underlayColor={Colors.white}
           style={styles.textContainerRight}
         >
-          <Text style={styles.statusBarText}>Save</Text>
+          <Text style={styles.statusBarText}>{Strings.save}</Text>
         </TouchableOpacity>
       </View>
     ),
@@ -45,7 +46,7 @@ class NewTask extends Component {
           underlayColor={Colors.white}
           style={styles.textContainerLeft}
         >
-          <Text style={styles.statusBarText}>Cancel</Text>
+          <Text style={styles.statusBarText}>{Strings.cancel}</Text>
         </TouchableOpacity>
       </View>
     )
@@ -100,29 +101,24 @@ class NewTask extends Component {
         <TextInput
           onFocus={() => this.onFocus("first")}
           onBlur={() => this.onBlur("first")}
-          style={{
-            borderBottomWidth: 1,
-            borderBottomColor: this.state.firstInputColor,
-            fontSize: 36,
-            color: Colors.black,
-            fontFamily: "SourceSansPro-Regular"
-          }}
-          placeholder="Task title"
+          style={[
+            { borderBottomColor: this.state.firstInputColor },
+            styles.textInput
+          ]}
+          placeholder={Strings.titlePlaceHolder}
           multiline={false}
           onChangeText={text => this.onChangeTitle(text)}
         />
         <TextInput
           onFocus={() => this.onFocus("second")}
           onBlur={() => this.onBlur("second")}
-          style={{
-            borderBottomWidth: 1,
-            borderBottomColor: this.state.secondInputColor,
-            textAlignVertical: "top",
-            height: 90,
-            fontFamily: "SourceSansPro-Regular",
-            fontSize: 14
-          }}
-          placeholder="Task Description"
+          style={[
+            {
+              borderBottomColor: this.state.secondInputColor
+            },
+            styles.textDescriptionInput
+          ]}
+          placeholder={Strings.descriptionPlaceHolder}
           multiline={true}
           numberOfLines={5}
           onChangeText={text => this.onChangeDescription(text)}
