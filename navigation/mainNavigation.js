@@ -1,10 +1,12 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Home from "../containers/home/Home";
+import NewTask from "../containers/newtask/NewTask";
 import { Colors } from "../colors/Colors";
 
 const MainNavigator = createStackNavigator(
   {
-    Home: Home
+    Home: Home,
+    NewTask: NewTask
   },
   {
     initialRouteName: "Home",

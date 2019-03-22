@@ -56,11 +56,26 @@ function homeReducer(state = initialStateHome, action) {
         })
       };
     case ActionsTypes.HANDLE_ADD_DATA:
+      return addToDo(state, action);
     case ActionsTypes.ADD_TODO:
     case ActionsTypes.ADD_TODO:
     default:
       return state;
   }
+}
+
+function addToDo(state, action) {
+  return Object.assign({}, state, {
+    todo: [
+      ...state.todo,
+      {
+        id: state.todo.length + 1,
+        title: action.payload.title,
+        description: action.payload.description,
+        completed: false
+      }
+    ]
+  });
 }
 
 export default homeReducer;
