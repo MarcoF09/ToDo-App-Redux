@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "tslint.alwaysShowStatus": true,
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "prettier.tslintIntegration": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  }
+}

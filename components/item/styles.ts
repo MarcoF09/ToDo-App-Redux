@@ -1,5 +1,5 @@
-import { Colors } from "../../colors/Colors";
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
+import { Colors } from '../../colors/Colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,23 +8,23 @@ export const styles = StyleSheet.create({
     paddingBottom: 16,
     paddingLeft: 30,
     paddingRight: 16,
-    flexDirection: "row",
+    flexDirection: 'row',
     borderWidth: 1,
     borderColor: Colors.lightGrey
   },
   textContainer: {
-    alignItems: "flex-start"
+    alignItems: 'flex-start'
   },
   primaryText: {
     lineHeight: 24,
     fontSize: 16,
     color: Colors.black,
-    fontFamily: "SourceSansPro-Regular"
+    fontFamily: 'SourceSansPro-Regular'
   },
   secondaryText: {
     lineHeight: 20,
     fontSize: 14,
     color: Colors.softGrey,
-    fontFamily: "SourceSansPro-Regular"
+    fontFamily: 'SourceSansPro-Regular'
   }
 });

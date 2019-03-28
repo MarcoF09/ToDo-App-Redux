@@ -1,37 +1,41 @@
-import React, { Component } from "react";
-import { styles } from "./styles";
-import { Colors } from "../../colors/Colors";
+import React, { Component } from 'react';
 import {
   StatusBar,
-  View,
-  TouchableOpacity,
   Text,
-  TextInput
-} from "react-native";
-import { Actions } from "../../actions/actions";
-import { connect } from "react-redux";
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import { NavigationRoute, NavigationScreenProp } from 'react-navigation';
+import { connect } from 'react-redux';
+import { Colors } from '../../colors/Colors';
+import { mapDispatchToProps } from './mapDispatchToProps';
+import { styles } from './styles';
 
-class NewTask extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstInputColor: Colors.lightGrey,
-      secondInputColor: Colors.lightGrey,
-      title: "",
-      description: ""
-    };
-  }
+interface Props {
+  navigation: NavigationScreenProp<NavigationRoute>;
+  addToDo: (title: string, description: string) => void;
+}
 
-  static navigationOptions = ({ navigation }) => ({
-    title: "New Task",
+interface NewTaskState {
+  firstInputColor: string;
+  secondInputColor: string;
+  title: string;
+  description: string;
+}
+
+class NewTask extends Component<Props, NewTaskState> {
+  public static navigationOptions = ({
+    navigation
+  }: NavigationScreenProp<NavigationRoute>) => ({
+    title: 'New Task',
     headerRight: (
       <View style={styles.headerContainerRight}>
         <TouchableOpacity
           onPress={() => {
-            navigation.getParam("addToDo")();
+            navigation.getParam('addToDo')();
             navigation.pop();
           }}
-          underlayColor={Colors.white}
           style={styles.textContainerRight}
         >
           <Text style={styles.statusBarText}>Save</Text>
@@ -42,7 +46,6 @@ class NewTask extends Component {
       <View style={styles.headerContainerLeft}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          underlayColor={Colors.white}
           style={styles.textContainerLeft}
         >
           <Text style={styles.statusBarText}>Cancel</Text>
@@ -51,27 +54,37 @@ class NewTask extends Component {
     )
   });
 
-  componentDidMount() {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      firstInputColor: Colors.lightGrey,
+      secondInputColor: Colors.lightGrey,
+      title: '',
+      description: ''
+    };
+  }
+
+  public componentDidMount() {
     const { navigation } = this.props;
     navigation.setParams({
       addToDo: this.dispatchAddToDo
     });
   }
 
-  dispatchAddToDo = () => {
+  public dispatchAddToDo = () => {
     this.props.addToDo(this.state.title, this.state.description);
   };
 
-  onChangeTitle = text => {
+  public onChangeTitle = (text: string) => {
     this.setState({ title: text });
   };
 
-  onChangeDescription = text => {
+  public onChangeDescription = (text: string) => {
     this.setState({ description: text });
   };
 
-  onFocus = input => {
-    if (input == "first") {
+  public onFocus = (input: string) => {
+    if (input === 'first') {
       this.setState({
         firstInputColor: Colors.pink
       });
@@ -81,8 +94,8 @@ class NewTask extends Component {
       });
     }
   };
-  onBlur = input => {
-    if (input == "first") {
+  public onBlur = (input: string) => {
+    if (input === 'first') {
       this.setState({
         firstInputColor: Colors.lightGrey
       });
@@ -93,33 +106,33 @@ class NewTask extends Component {
     }
   };
 
-  render() {
+  public render() {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor={Colors.customBlue} />
         <TextInput
-          onFocus={() => this.onFocus("first")}
-          onBlur={() => this.onBlur("first")}
+          onFocus={() => this.onFocus('first')}
+          onBlur={() => this.onBlur('first')}
           style={{
             borderBottomWidth: 1,
             borderBottomColor: this.state.firstInputColor,
             fontSize: 36,
             color: Colors.black,
-            fontFamily: "SourceSansPro-Regular"
+            fontFamily: 'SourceSansPro-Regular'
           }}
           placeholder="Task title"
           multiline={false}
           onChangeText={text => this.onChangeTitle(text)}
         />
         <TextInput
-          onFocus={() => this.onFocus("second")}
-          onBlur={() => this.onBlur("second")}
+          onFocus={() => this.onFocus('second')}
+          onBlur={() => this.onBlur('second')}
           style={{
             borderBottomWidth: 1,
             borderBottomColor: this.state.secondInputColor,
-            textAlignVertical: "top",
+            textAlignVertical: 'top',
             height: 90,
-            fontFamily: "SourceSansPro-Regular",
+            fontFamily: 'SourceSansPro-Regular',
             fontSize: 14
           }}
           placeholder="Task Description"
@@ -131,12 +144,6 @@ class NewTask extends Component {
     );
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  addToDo: (title, description) => {
-    dispatch(Actions.addToDo(title, description));
-  }
-});
 
 export default connect(
   null,

@@ -1,38 +1,53 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
-  StatusBar,
-  TouchableOpacity,
-  Text,
-  View,
-  FlatList,
+  ActivityIndicator,
   Animated,
+  FlatList,
+  ListRenderItemInfo,
+  StatusBar,
+  Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
-  ActivityIndicator
-} from "react-native";
-import { connect } from "react-redux";
-import { Colors } from "../../colors/Colors";
-import { Item } from "../../components/item";
-import { Button } from "../../components/button";
-import { styles } from "./styles";
-import { Actions } from "../../actions/actions";
+  View
+} from 'react-native';
+import {
+  AnimatedValue,
+  NavigationRoute,
+  NavigationScreenProp
+} from 'react-navigation';
+import { connect } from 'react-redux';
+import { Colors } from '../../colors/Colors';
+import { Button } from '../../components/button';
+import { Item } from '../../components/item';
+import { State, Todo } from '../../types/globalTypes';
+import { mapDispatchToProps } from './mapDispatchToProps';
+import { mapStateToProps } from './mapStateToProps';
+import { styles } from './styles';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.moveAnimation = new Animated.ValueXY({ x: -100, y: 30 });
-    this.state = {
-      deleteButtonState: false,
-      refreshing: false
-    };
-  }
+interface Props {
+  todo: Todo[];
+  navigation: NavigationScreenProp<NavigationRoute>;
+  getToDoData: () => void;
+  clearAllDone: (todos: Todo[]) => void;
+  changeCheckBoxState: (todos: Todo[], index: number) => void;
+  deleteItem: (todos: Todo[], index: number) => void;
+}
 
-  static navigationOptions = ({ navigation }) => ({
-    title: "Home",
+interface HomeState extends State {
+  deleteButtonState: boolean;
+  moveAnimation: AnimatedValue;
+}
+
+class Home extends Component<Props, HomeState> {
+  public static navigationOptions = ({
+    navigation
+  }: NavigationScreenProp<NavigationRoute>) => ({
+    title: 'Home',
     headerLeft: (
       <View style={styles.headerLeftContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigation.getParam("animation")();
+            navigation.getParam('animation')();
           }}
         >
           <Text style={styles.headerText}>Edit/Cancel</Text>
@@ -41,14 +56,23 @@ class Home extends Component {
     ),
     headerRight: (
       <View style={styles.headerRightContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("NewTask")}>
+        <TouchableOpacity onPress={() => navigation.navigate('NewTask')}>
           <Text style={styles.headerText}>+</Text>
         </TouchableOpacity>
       </View>
     )
   });
 
-  componentDidMount() {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      todo: [],
+      moveAnimation: new Animated.ValueXY({ x: -100, y: 30 }),
+      deleteButtonState: false
+    };
+  }
+
+  public componentDidMount() {
     const { navigation } = this.props;
     navigation.setParams({
       animation: this.animateDeleteButton
@@ -56,25 +80,28 @@ class Home extends Component {
     this.props.getToDoData();
   }
 
-  animateDeleteButton = () => {
+  public animateDeleteButton = (): void => {
     if (!this.state.deleteButtonState) {
-      Animated.spring(this.moveAnimation, {
+      Animated.spring(this.state.moveAnimation, {
         toValue: { x: 6, y: 30 }
       }).start();
       this.setState({ deleteButtonState: true });
     } else {
-      Animated.spring(this.moveAnimation, {
+      Animated.spring(this.state.moveAnimation, {
         toValue: { x: -100, y: 30 }
       }).start();
       this.setState({ deleteButtonState: false });
     }
   };
 
-  renderItem = (item, navigation) => {
+  public renderItem = (
+    item: ListRenderItemInfo<Todo>,
+    navigation: NavigationScreenProp<NavigationRoute>
+  ) => {
     return (
       <View>
         <Animated.View
-          style={[styles.deleteContainer, this.moveAnimation.getLayout()]}
+          style={[styles.deleteContainer, this.state.moveAnimation.getLayout()]}
         >
           <TouchableWithoutFeedback
             style={styles.buttonDelete}
@@ -88,7 +115,7 @@ class Home extends Component {
 
         <Item
           onPress={() => {
-            navigation.push("Detail", {
+            navigation.push('Detail', {
               index: item.index
             });
           }}
@@ -101,7 +128,7 @@ class Home extends Component {
     );
   };
 
-  renderFooter = () => {
+  public renderFooter = () => {
     return this.props.todo.length > 0 ? (
       <Button
         text="CLEAR ALL DONE"
@@ -111,13 +138,13 @@ class Home extends Component {
         }}
       />
     ) : (
-      <View style={[styles.container, styles.horizontal]}>
+      <View>
         <ActivityIndicator size="large" color={Colors.customBlue} />
       </View>
     );
   };
 
-  render() {
+  public render() {
     const { navigation } = this.props;
     console.log(this.props.todo.length);
     return (
@@ -134,27 +161,6 @@ class Home extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    todo: state.todo
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  getToDoData: () => {
-    dispatch(Actions.getToDoData());
-  },
-  clearAllDone: todos => {
-    dispatch(Actions.clearAllDone(todos));
-  },
-  changeCheckBoxState: (todos, index) => {
-    dispatch(Actions.changeCheckBoxState(todos, index));
-  },
-  deleteItem: (todos, index) => {
-    dispatch(Actions.deleteItem(todos, index));
-  }
-});
 
 export default connect(
   mapStateToProps,
