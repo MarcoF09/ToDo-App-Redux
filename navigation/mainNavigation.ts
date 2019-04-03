@@ -4,9 +4,9 @@ import {
   NavigationContainer
 } from 'react-navigation';
 import { Colors } from '../colors/Colors';
-import Detail from '../containers/detail/Detail';
-import Home from '../containers/home/Home';
-import NewTask from '../containers/newtask/NewTask';
+import Detail from '../containers/detail';
+import Home from '../containers/home';
+import NewTask from '../containers/newtask';
 
 const MainNavigator: NavigationContainer = createStackNavigator(
   {

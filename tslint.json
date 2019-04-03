@@ -8,6 +8,7 @@
     "tslint-config-airbnb"
   ],
   "rules": {
+    "member-access": false,
     "jsx-no-lambda": false,
     "align": false,
     "array-type": false,
