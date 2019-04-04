@@ -35,32 +35,6 @@ class HttpService {
     return axios.delete(url, { headers });
   }
 
-  /*setHeaders(headers) {
-    Object.assign(this.axios.defaults.headers.common, headers);
-  }*/
-
-  // Header builders are functions that are run for each request.
-  // They must return an object, which will be merged with
-  // the current headers. If builder is not a function, nothing will be done.
-  // NOTE: Since builders can return a promise, there's no guarantee that
-  // they will run in the order they were pushed.
-  // FIXME: think of ways to fix the previous note.
-  /*  addHeaderBuilder(name, builder) {
-    if (typeof builder !== "function") {
-      return;
-    }
-    this.headerBuilders.push({
-      name: name,
-      builder: builder
-    });
-  }*/
-
-  /*clearHeaderBuilder(name) {
-    this.headerBuilders = this.headerBuilders.filter(
-      element => element.name !== name
-    );
-  }*/
-
   public async _generateHeaders(): Promise<any> {
     const generatedHeaders = {};
     // Builders can be async. Wait for all of them to finish.
