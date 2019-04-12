@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { StatusBar, Text, View } from 'react-native';
-import { Colors } from '../../colors/Colors';
-import { Button } from '../../components/button';
-import { Strings } from '../../strings';
-import { styles } from './styles';
-import { LayoutProps } from './types';
+import React, { FunctionComponent } from 'react'
+import { StatusBar, Text, View } from 'react-native'
+import { Colors } from '../../colors/Colors'
+import { Button } from '../../components/button'
+import { Strings } from '../../strings'
+import { styles } from './styles'
+import { LayoutProps } from './types'
 
 export const Layout: FunctionComponent<LayoutProps> = ({
   markAsDone,
@@ -19,8 +19,8 @@ export const Layout: FunctionComponent<LayoutProps> = ({
         <Button
           text={Strings.notDone}
           onPress={() => {
-            markAsNotDone(todo, navigation.getParam('index'));
-            navigation.pop();
+            markAsNotDone(todo, navigation.getParam('index'))
+            navigation.pop()
           }}
         />
       </View>
@@ -33,10 +33,10 @@ export const Layout: FunctionComponent<LayoutProps> = ({
       <Button
         text={Strings.markAsDone}
         onPress={() => {
-          markAsDone(todo, navigation.getParam('index'));
-          navigation.pop();
+          markAsDone(todo, navigation.getParam('index'))
+          navigation.pop()
         }}
       />
     </View>
-  );
-};
+  )
+}

@@ -1,23 +1,21 @@
-import { Dispatch } from 'react';
-import { MapDispatchToProps } from 'react-redux';
-import { Actions } from '../../actions/actions';
-import { State, Todo } from '../../types/globalTypes';
-import { Actions as ActionCreator } from '../../types/types';
+import { Action } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { Actions } from '../../actions/actions'
+import { State, Todo } from '../../types/globalTypes'
 
-export const mapDispatchToProps: MapDispatchToProps<
-  Dispatch<ActionCreator>,
-  State
-> = dispatch => ({
+export const mapDispatchToProps = (
+  dispatch: ThunkDispatch<State, {}, Action>
+) => ({
   getToDoData: () => {
-    dispatch(Actions.getToDoData());
+    dispatch(Actions.getToDoData())
   },
   clearAllDone: (todos: Todo[]) => {
-    dispatch(Actions.clearAllDone(todos));
+    dispatch(Actions.clearAllDone(todos))
   },
   changeCheckBoxState: (todos: Todo[], index: number) => {
-    dispatch(Actions.changeCheckBoxState(todos, index));
+    dispatch(Actions.changeCheckBoxState(todos, index))
   },
   deleteItem: (todos: Todo[], index: number) => {
-    dispatch(Actions.deleteItem(todos, index));
+    dispatch(Actions.deleteItem(todos, index))
   }
-});
+})

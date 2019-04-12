@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a list of method used in home methods returned correctly 1`] = `
+Object {
+  "changeCheckBoxState": [Function],
+  "clearAllDone": [Function],
+  "deleteItem": [Function],
+  "getToDoData": [Function],
+}
+`;

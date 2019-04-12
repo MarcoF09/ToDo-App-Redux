@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button renders correctly with checked 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[MockFunction]}
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../resources/images/iconCheckboxActive.png",
+        }
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`should render button renders correctly without checked 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-end",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    onPress={[MockFunction]}
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../resources/images/iconCheckboxInactive.png",
+        }
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;

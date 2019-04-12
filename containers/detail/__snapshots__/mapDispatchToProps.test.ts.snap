@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return two method to handle if a todo is done or not methods returned correctly 1`] = `
+Object {
+  "markAsDone": [Function],
+  "markAsNotDone": [Function],
+}
+`;

@@ -1,4 +1,3 @@
-import { State } from '../types/globalTypes';
 import {
   AddToDoSuccessAction,
   ChangeCheckBoxStateActionSuccessAction,
@@ -7,7 +6,8 @@ import {
   GetToDoDataSuccess,
   MarkAsDoneSuccessAction,
   MarkAsNotDoneSuccessAction
-} from '../types/types';
+} from '../types';
+import { State } from '../types/globalTypes';
 
 export const addToDo = (state: State, action: AddToDoSuccessAction) => {
   return Object.assign({}, state, {

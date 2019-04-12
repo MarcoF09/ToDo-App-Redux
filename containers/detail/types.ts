@@ -1,11 +1,18 @@
-import { withNavigation } from 'react-navigation';
-import { ExtractTInner } from '../../hocs/types';
-import { Todo } from '../../types/globalTypes';
+import {
+  NavigationParams,
+  NavigationRoute,
+  NavigationScreenProp
+} from 'react-navigation'
+import { Todo } from '../../types/globalTypes'
 
 export interface Props {
-  todo: Todo[];
-  markAsNotDone: (todos: Todo[], index: number) => void;
-  markAsDone: (todos: Todo[], index: number) => void;
+  todo: Todo[]
+  markAsNotDone: (todos: Todo[], index: number) => void
+  markAsDone: (todos: Todo[], index: number) => void
+  navigation: NavigationScreenProp<
+    NavigationRoute<NavigationParams>,
+    NavigationParams
+  >
 }
 
-export type LayoutProps = ExtractTInner<typeof withNavigation> & Props;
+export type LayoutProps = Props

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render new task screen renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "borderColor": "#f0f0f0",
+      "borderWidth": 1,
+      "padding": 16,
+    }
+  }
+>
+  <StatusBar
+    animated={false}
+    backgroundColor="#1f86ff"
+    showHideTransition="fade"
+  />
+  <TextInput
+    allowFontScaling={true}
+    multiline={false}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    placeholder="Task title"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderBottomColor": "blue",
+        "borderBottomWidth": 1,
+        "color": "black",
+        "fontFamily": "SourceSansPro-Regular",
+        "fontSize": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    multiline={true}
+    numberOfLines={5}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    placeholder="Task description"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderBottomColor": "blue",
+        "borderBottomWidth": 1,
+        "fontFamily": "SourceSansPro-Regular",
+        "fontSize": 14,
+        "height": 90,
+        "textAlignVertical": "top",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
