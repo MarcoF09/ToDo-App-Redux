@@ -148,34 +148,34 @@ describe('should modify state', () => {
     )
   })
   it('clears all todos fail', async () => {
-    // updateDataMock.mockRejectedValue('error')
-    // await Actions.clearAllDone(state.todo)(dispatch)
-    // expect(dispatch).toHaveBeenCalledWith(clearAllDoneFail())
+    updateDataMock.mockRejectedValue('error')
+    await Actions.clearAllDone(state.todo)(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(clearAllDoneFail())
   })
-  it('marks a todo as not done', async () => {
-    // const stateWithChangeInCompletedItem: State = {
-    //   todo: [
-    //     {
-    //       id: '1',
-    //       title: 'Title1',
-    //       description: 'Description1',
-    //       completed: false,
-    //       url: ''
-    //     },
-    //     {
-    //       id: '2',
-    //       title: 'Title2',
-    //       description: 'Description2',
-    //       completed: false,
-    //       url: ''
-    //     }
-    //   ]
-    // }
-    // const index = 1
-    // await Actions.markAsNotDone(state.todo, index)(dispatch)
-    // expect(dispatch).toHaveBeenCalledWith(
-    //   markAsNotDoneSuccess(stateWithChangeInCompletedItem)
-    // )
+  it.only('marks a todo as not done', async () => {
+    const stateWithChangeInCompletedItem: State = {
+      todo: [
+        {
+          id: '1',
+          title: 'Title1',
+          description: 'Description1',
+          completed: false,
+          url: ''
+        },
+        {
+          id: '2',
+          title: 'Title2',
+          description: 'Description2',
+          completed: false,
+          url: ''
+        }
+      ]
+    }
+    const index = 1
+    await Actions.markAsNotDone(state.todo, index)(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(
+      markAsNotDoneSuccess(stateWithChangeInCompletedItem.todo)
+    )
   })
   it('marks a todo as not done fail', async () => {
     updateDataMock.mockRejectedValue('error')
@@ -184,29 +184,29 @@ describe('should modify state', () => {
     expect(dispatch).toHaveBeenCalledWith(markAsNotDoneFail())
   })
   it('marks a todo as done', async () => {
-    // const stateWithChangeInCompletedItem: State = {
-    //   todo: [
-    //     {
-    //       id: '1',
-    //       title: 'Title1',
-    //       description: 'Description1',
-    //       completed: true,
-    //       url: ''
-    //     },
-    //     {
-    //       id: '2',
-    //       title: 'Title2',
-    //       description: 'Description2',
-    //       completed: true,
-    //       url: ''
-    //     }
-    //   ]
-    // }
-    // const index = 1
-    // await Actions.markAsDone(state.todo, index)(dispatch)
-    // expect(dispatch).toHaveBeenCalledWith(
-    //   markAsDoneSuccess(stateWithChangeInCompletedItem.todo)
-    // )
+    const stateWithChangeInCompletedItem: State = {
+      todo: [
+        {
+          id: '1',
+          title: 'Title1',
+          description: 'Description1',
+          completed: true,
+          url: ''
+        },
+        {
+          id: '2',
+          title: 'Title2',
+          description: 'Description2',
+          completed: true,
+          url: ''
+        }
+      ]
+    }
+    const index = 1
+    await Actions.markAsDone(state.todo, index)(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(
+      markAsDoneSuccess(stateWithChangeInCompletedItem.todo)
+    )
   })
   it('marks a todo as done fail', async () => {
     updateDataMock.mockRejectedValue('error')
