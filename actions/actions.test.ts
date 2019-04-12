@@ -174,7 +174,7 @@ describe('should modify state', () => {
     // const index = 1
     // await Actions.markAsNotDone(state.todo, index)(dispatch)
     // expect(dispatch).toHaveBeenCalledWith(
-    //   markAsNotDoneSuccess(stateWithChangeInCompletedItem)
+    //   markAsNotDoneSuccess(stateWithChangeInCompletedItem.todo)
     // )
   })
   it('marks a todo as not done fail', async () => {
