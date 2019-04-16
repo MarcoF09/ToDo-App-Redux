@@ -9,7 +9,7 @@ describe('should add a todo', () => {
   })
 
   it('should verify if the view is visible', async () => {
-    await expect(element(by.id('layout'))).toBeVisible()
+    await expect(element(by.id('newTaskLayout'))).toBeVisible()
   })
   it('should type the inputs texts', async () => {
     await element(by.id('title')).typeText('titleTest')

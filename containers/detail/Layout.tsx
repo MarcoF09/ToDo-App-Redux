@@ -13,7 +13,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({
   markAsNotDone
 }: LayoutProps) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="detailLayout">
       <StatusBar backgroundColor={Colors.customBlue} />
       <View style={styles.topButtonContainer}>
         <Button

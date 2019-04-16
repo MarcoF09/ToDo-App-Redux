@@ -14,7 +14,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({
   changeCheckBoxState
 }: LayoutProps) => {
   return (
-    <View>
+    <View testID="homeLayout">
       <StatusBar backgroundColor={Colors.customBlue} />
       <FlatList
         data={todo}

@@ -16,7 +16,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({
   onChangeDescription
 }: LayoutProps) => {
   return (
-    <View style={styles.container} testID="layout">
+    <View style={styles.container} testID="newTaskLayout">
       <StatusBar backgroundColor={Colors.customBlue} />
       <TextInput
         testID="title"
