@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { NavigationRoute, NavigationScreenProp } from 'react-navigation';
-import { Strings } from '../../strings';
-import { styles } from './styles';
+import React, { FunctionComponent } from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { NavigationRoute, NavigationScreenProp } from 'react-navigation'
+import { Strings } from '../../strings'
+import { styles } from './styles'
 
 export const withNavigationHeader = (WrappedComponent: FunctionComponent) => {
   return class extends React.Component {
@@ -13,9 +13,10 @@ export const withNavigationHeader = (WrappedComponent: FunctionComponent) => {
       headerRight: (
         <View style={styles.headerContainerRight}>
           <TouchableOpacity
+            testID="saveTodo"
             onPress={() => {
-              navigation.getParam('addToDo')();
-              navigation.pop();
+              navigation.getParam('addToDo')()
+              navigation.pop()
             }}
             style={styles.textContainerRight}
           >
@@ -26,6 +27,7 @@ export const withNavigationHeader = (WrappedComponent: FunctionComponent) => {
       headerLeft: (
         <View style={styles.headerContainerLeft}>
           <TouchableOpacity
+            testID="cancelAddTodo"
             onPress={() => navigation.goBack()}
             style={styles.textContainerLeft}
           >
@@ -33,9 +35,9 @@ export const withNavigationHeader = (WrappedComponent: FunctionComponent) => {
           </TouchableOpacity>
         </View>
       )
-    });
+    })
     public render() {
-      return <WrappedComponent />;
+      return <WrappedComponent />
     }
-  };
-};
+  }
+}

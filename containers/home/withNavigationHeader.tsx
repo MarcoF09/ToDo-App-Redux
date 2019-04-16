@@ -1,13 +1,13 @@
-import React, { Component, FunctionComponent } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { NavigationRoute, NavigationScreenProp } from 'react-navigation';
-import { Hoc } from '../../hocs/types';
-import { styles } from './styles';
+import React, { Component, FunctionComponent } from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { NavigationRoute, NavigationScreenProp } from 'react-navigation'
+import { Hoc } from '../../hocs/types'
+import { styles } from './styles'
 
 export const withNavigationHeader: Hoc<
   {},
   {
-    navigation: NavigationScreenProp<NavigationRoute>;
+    navigation: NavigationScreenProp<NavigationRoute>
   }
 > = (WrappedComponent: FunctionComponent) => {
   return class extends Component {
@@ -19,7 +19,7 @@ export const withNavigationHeader: Hoc<
         <View style={styles.headerLeftContainer}>
           <TouchableOpacity
             onPress={() => {
-              navigation.getParam('animation')();
+              navigation.getParam('animation')()
             }}
           >
             <Text style={styles.headerText}>Edit/Cancel</Text>
@@ -28,14 +28,17 @@ export const withNavigationHeader: Hoc<
       ),
       headerRight: (
         <View style={styles.headerRightContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('NewTask')}>
+          <TouchableOpacity
+            testID="goToNewtask"
+            onPress={() => navigation.navigate('NewTask')}
+          >
             <Text style={styles.headerText}>+</Text>
           </TouchableOpacity>
         </View>
       )
-    });
+    })
     public render() {
-      return <WrappedComponent />;
+      return <WrappedComponent />
     }
-  };
-};
+  }
+}

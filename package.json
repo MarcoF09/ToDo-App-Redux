@@ -69,7 +69,7 @@
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ToDoApp.app",
         "build": "xcodebuild -project ios/ToDoApp.xcodeproj -scheme ToDoApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
-        "name": "iPhone 7"
+        "name": "iPhone X"
       },
       "android.emu.release": {
         "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
