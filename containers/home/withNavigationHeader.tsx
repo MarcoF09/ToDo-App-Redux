@@ -18,6 +18,7 @@ export const withNavigationHeader: Hoc<
       headerLeft: (
         <View style={styles.headerLeftContainer}>
           <TouchableOpacity
+            testID="deleteOrCancel"
             onPress={() => {
               navigation.getParam('animation')()
             }}
