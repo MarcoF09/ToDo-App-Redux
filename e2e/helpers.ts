@@ -1,7 +1,8 @@
 import { execSync } from 'child_process'
+import { by, device, element } from 'detox'
 import { existsSync, mkdirSync } from 'fs'
 
-const SCREENSHOT_DIR = '/tmp/screenshots'
+const SCREENSHOT_DIR = './tmp/screenshots'
 
 const SCREENSHOT_OPTIONS = {
   timeout: 1000,

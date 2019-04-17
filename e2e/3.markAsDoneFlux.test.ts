@@ -1,3 +1,4 @@
+import { by, device, element } from 'detox'
 import { Strings } from 'strings'
 
 describe('should mark as done an item', () => {
@@ -6,14 +7,12 @@ describe('should mark as done an item', () => {
   })
 
   it('should got to Detail screen', async () => {
-    await device.takeScreenshot('before go to detail')
     await element(by.id('item').withDescendant(by.text('titleTest')))
       .atIndex(0)
       .tap()
   })
 
   it('verify if the screen is the detail', async () => {
-    await device.takeScreenshot('detail screen')
     await expect(element(by.id('detailLayout'))).toBeVisible()
   })
 
@@ -22,7 +21,6 @@ describe('should mark as done an item', () => {
   })
 
   it('verify if the screen is the home', async () => {
-    await device.takeScreenshot('home screen')
     await expect(element(by.id('homeLayout'))).toBeVisible()
   })
 })
