@@ -1,0 +1,7 @@
+import './1.addToDoFluxSuccess.test.ts'
+import './2.addToDoFluxCancel.test.ts'
+import './3.markAsDoneFlux.test.ts'
+import './4.markAsNotDoneFlux.test.ts'
+import './5.checkAndUncheckCheckbox.test'
+import './6.clearAllDone.test'
+import './7.deleteToDo.test.ts'

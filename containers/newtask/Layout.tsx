@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { StatusBar, TextInput, View } from 'react-native';
-import { Colors } from '../../colors/Colors';
-import { Strings } from '../../strings';
-import { styles } from './styles';
-import { LayoutProps } from './types';
+import React, { FunctionComponent } from 'react'
+import { StatusBar, TextInput, View } from 'react-native'
+import { Colors } from '../../colors/Colors'
+import { Strings } from '../../strings'
+import { styles } from './styles'
+import { LayoutProps } from './types'
 
 export const Layout: FunctionComponent<LayoutProps> = ({
   firstInputColor,
@@ -16,9 +16,10 @@ export const Layout: FunctionComponent<LayoutProps> = ({
   onChangeDescription
 }: LayoutProps) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="newTaskLayout">
       <StatusBar backgroundColor={Colors.customBlue} />
       <TextInput
+        testID="title"
         onFocus={() => onFocusTitle()}
         onBlur={() => onBlurTitle()}
         style={{
@@ -33,6 +34,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({
         onChangeText={text => onChangeTitle(text)}
       />
       <TextInput
+        testID="description"
         onFocus={() => onFocusDescription()}
         onBlur={() => onBlurDescription()}
         style={{
@@ -49,5 +51,5 @@ export const Layout: FunctionComponent<LayoutProps> = ({
         onChangeText={text => onChangeDescription(text)}
       />
     </View>
-  );
-};
+  )
+}
