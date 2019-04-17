@@ -7,7 +7,7 @@ describe('should mark as done an item', () => {
   })
 
   it('should got to Detail screen', async () => {
-    await element(by.id('item').withDescendant(by.text('titleTest')))
+    await element(by.id('item0'))
       .atIndex(0)
       .tap()
   })

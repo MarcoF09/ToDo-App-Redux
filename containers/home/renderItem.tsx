@@ -24,7 +24,7 @@ export const renderItem = (
   changeCheckBoxState: (todos: Todo[], index: number) => void
 ) => {
   return (
-    <View testID="item">
+    <View testID={`item${item.index}`}>
       <Animated.View
         style={[styles.deleteContainer, moveAnimation.getLayout()]}
       >
