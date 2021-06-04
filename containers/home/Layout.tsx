@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { FlatList, StatusBar, View } from 'react-native';
-import { Colors } from '../../colors/Colors';
-import { renderFooter } from './renderFooter';
-import { renderItem } from './renderItem';
-import { LayoutProps } from './types';
+import React, { FunctionComponent } from 'react'
+import { FlatList, StatusBar, View } from 'react-native'
+import { Colors } from '../../colors/Colors'
+import { renderFooter } from './renderFooter'
+import { renderItem } from './renderItem'
+import { LayoutProps } from './types'
 
 export const Layout: FunctionComponent<LayoutProps> = ({
   todo,
@@ -32,5 +32,5 @@ export const Layout: FunctionComponent<LayoutProps> = ({
         ListFooterComponent={() => renderFooter(todo, clearAllDone)}
       />
     </View>
-  );
-};
+  )
+}

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should animate the delete button brings the button 1`] = `
+Object {
+  "x": -100,
+  "y": 30,
+}
+`;

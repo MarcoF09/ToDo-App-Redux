@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render detail screen renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "borderColor": "#f0f0f0",
+      "borderWidth": 1,
+      "flexDirection": "column",
+      "padding": 16,
+    }
+  }
+>
+  <StatusBar
+    animated={false}
+    backgroundColor="#1f86ff"
+    showHideTransition="fade"
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      text="Not done"
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontFamily": "SourceSansPro-Regular",
+        "fontSize": 36,
+        "lineHeight": 54,
+      }
+    }
+  >
+    Title1
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#959595",
+        "fontFamily": "SourceSansPro-Regular",
+        "fontSize": 14,
+        "lineHeight": 20,
+      }
+    }
+  >
+    Description1
+  </Text>
+  <Button
+    onPress={[Function]}
+    text="MARK AS DONE"
+  />
+</View>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return a list of todos returns correctly the list of todos 1`] = `
+Object {
+  "todo": Array [
+    Object {
+      "completed": false,
+      "description": "Description1",
+      "title": "Title1",
+      "url": "",
+    },
+  ],
+}
+`;

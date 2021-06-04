@@ -1,5 +1,5 @@
-import { Animated } from 'react-native';
-import { withStateHandlers } from 'recompose';
+import { Animated } from 'react-native'
+import { withStateHandlers } from 'recompose'
 
 const animateDeleteButton = (
   deleteButtonState: boolean,
@@ -8,14 +8,14 @@ const animateDeleteButton = (
   if (!deleteButtonState) {
     Animated.spring(moveAnimation, {
       toValue: { x: 6, y: 30 }
-    }).start();
-    return true;
+    }).start()
+    return true
   }
   Animated.spring(moveAnimation, {
     toValue: { x: -100, y: 30 }
-  }).start();
-  return false;
-};
+  }).start()
+  return false
+}
 
 export const withDeleteButtonHandler = withStateHandlers(
   {
@@ -30,4 +30,4 @@ export const withDeleteButtonHandler = withStateHandlers(
       )
     })
   }
-);
+)

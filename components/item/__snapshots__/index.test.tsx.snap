@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button renders correctly 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  onPress={[MockFunction]}
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderColor": "#f0f0f0",
+        "borderWidth": 1,
+        "flex": 1,
+        "flexDirection": "row",
+        "paddingBottom": 16,
+        "paddingLeft": 30,
+        "paddingRight": 16,
+        "paddingTop": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          }
+        }
+      >
+        Title
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#959595",
+            "fontFamily": "SourceSansPro-Regular",
+            "fontSize": 14,
+            "lineHeight": 20,
+          }
+        }
+      >
+        Description
+      </Text>
+    </View>
+    <CheckBox
+      checked={true}
+      click={[MockFunction]}
+    />
+  </View>
+</TouchableOpacity>
+`;

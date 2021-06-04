@@ -7,7 +7,7 @@ import { name as appName } from './app.json';
 import { AppNavigator } from './navigation/mainNavigation';
 import rootReducer from './reducers/todoApp';
 import { State } from './types/globalTypes.js';
-import { Actions } from './types/types.js';
+import { Actions } from './types/index.js';
 
 const store: Store<State, Actions> = createStore(
   rootReducer,

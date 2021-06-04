@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render home screen renders correctly with delete button 1`] = `
+<View>
+  <StatusBar
+    animated={false}
+    backgroundColor="#1f86ff"
+    showHideTransition="fade"
+  />
+  <FlatList
+    ListFooterComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "completed": false,
+          "description": "Description1",
+          "title": "Title1",
+          "url": "",
+        },
+        Object {
+          "completed": true,
+          "description": "Description2",
+          "title": "Title2",
+          "url": "",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`should render home screen renders correctly without delete button 1`] = `
+<View>
+  <StatusBar
+    animated={false}
+    backgroundColor="#1f86ff"
+    showHideTransition="fade"
+  />
+  <FlatList
+    ListFooterComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "completed": false,
+          "description": "Description1",
+          "title": "Title1",
+          "url": "",
+        },
+        Object {
+          "completed": true,
+          "description": "Description2",
+          "title": "Title2",
+          "url": "",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;
+
+exports[`should render home screen renders correctly without todos 1`] = `
+<View>
+  <StatusBar
+    animated={false}
+    backgroundColor="#1f86ff"
+    showHideTransition="fade"
+  />
+  <FlatList
+    ListFooterComponent={[Function]}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

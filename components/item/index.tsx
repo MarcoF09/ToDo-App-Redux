@@ -1,15 +1,15 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../../colors/Colors';
-import { CheckBox } from '../checkbox';
-import { styles } from './styles';
+import React from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { Colors } from '../../colors/Colors'
+import { CheckBox } from '../checkbox'
+import { styles } from './styles'
 
 export interface Props {
-  onPress: any;
-  title: string;
-  description?: string;
-  completed: boolean;
-  checkboxClick: () => void;
+  onPress: any
+  title: string
+  description?: string
+  completed: boolean
+  checkboxClick: () => void
 }
 
 export const Item = (props: Props) => (
@@ -25,4 +25,4 @@ export const Item = (props: Props) => (
       <CheckBox checked={props.completed} click={props.checkboxClick} />
     </View>
   </TouchableOpacity>
-);
+)

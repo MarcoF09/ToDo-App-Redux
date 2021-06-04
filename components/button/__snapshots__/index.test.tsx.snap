@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render button renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={0.85}
+    delayPressOut={100}
+    onPress={[MockFunction]}
+    underlayColor="white"
+  >
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "#ff197b",
+            "fontFamily": "SourceSansPro-SemiBold",
+            "fontSize": 14,
+            "lineHeight": 32,
+          }
+        }
+      >
+        Dummy
+      </Text>
+    </View>
+  </TouchableHighlight>
+</View>
+`;

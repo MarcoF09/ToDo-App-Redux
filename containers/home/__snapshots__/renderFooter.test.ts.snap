@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the footer renders correctly the button 1`] = `
+<Button
+  onPress={[Function]}
+  styleButton={
+    Object {
+      "alignItems": "center",
+      "height": 48,
+      "marginTop": 16,
+      "width": 204,
+    }
+  }
+  text="CLEAR ALL DONE"
+/>
+`;
+
+exports[`should render the footer renders correctly the loading indicator 1`] = `
+<View>
+  <ActivityIndicator
+    animating={true}
+    color="#1f86ff"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
+`;

@@ -1,25 +1,25 @@
-import { compose, withStateHandlers } from 'recompose';
-import { Colors } from '../../colors/Colors';
+import { compose, withStateHandlers } from 'recompose'
+import { Colors } from '../../colors/Colors'
 
-const withTitleHandlers = withStateHandlers(
+export const withTitleHandlers = withStateHandlers(
   { title: '' },
   {
     onChangeTitle: state => (text: string) => ({
       title: text
     })
   }
-);
+)
 
-const withDescriptionHandlers = withStateHandlers(
+export const withDescriptionHandlers = withStateHandlers(
   { description: '' },
   {
     onChangeDescription: state => (text: string) => ({
       description: text
     })
   }
-);
+)
 
-const withTitleColorHandler = withStateHandlers(
+export const withTitleColorHandler = withStateHandlers(
   {
     firstInputColor: Colors.lightGrey
   },
@@ -31,9 +31,9 @@ const withTitleColorHandler = withStateHandlers(
       firstInputColor: Colors.lightGrey
     })
   }
-);
+)
 
-const withDescriptionColorHandler = withStateHandlers(
+export const withDescriptionColorHandler = withStateHandlers(
   {
     secondInputColor: Colors.lightGrey
   },
@@ -45,11 +45,11 @@ const withDescriptionColorHandler = withStateHandlers(
       secondInputColor: Colors.lightGrey
     })
   }
-);
+)
 
 export const stateEnhacer = compose(
   withTitleHandlers,
   withDescriptionHandlers,
   withTitleColorHandler,
   withDescriptionColorHandler
-);
+)
